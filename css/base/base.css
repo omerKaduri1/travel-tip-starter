@@ -1,6 +1,7 @@
 body {
     background-color: var(--bg1);
-    color: #eee;
+    color: pink;
+     /* #eee; */
     overflow-x: hidden;
 }
 
