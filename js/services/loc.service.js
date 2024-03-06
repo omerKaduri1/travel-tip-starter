@@ -55,7 +55,7 @@ function query() {
             } else if (gSortBy.name !== undefined) {
                 locs.sort((p1, p2) => p1.name.localeCompare(p2.name) * gSortBy.name)
             }else if (gSortBy.date !== undefined) {
-                locs.sort((p1, p2) => new Date(p1.createdAt) - new Date(p2.createdAt) * gSortBy.date)
+                locs.sort((p1, p2) => (new Date(p1.createdAt) - new Date(p2.createdAt)) * gSortBy.date)
             }
             return locs
         })
