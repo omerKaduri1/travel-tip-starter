@@ -70,15 +70,21 @@ function renderLocs(locs) {
 }
 
 function onRemoveLoc(locId) {
-    locService.remove(locId)
-        .then(() => {
-            flashMsg('Location removed')
-            unDisplayLoc()
-            loadAndRenderLocs()
-        })
-        .catch(err => {
-            console.error('OOPs:', err)
-            flashMsg('Cannot remove location')
+    locService.getById(locId)
+        .then(res => {
+            if (confirm(`Are you sure you want to delete ${res.name}?`)) {
+                locService.remove(locId)
+                    .then(() => {
+                        flashMsg('Location removed')
+                        unDisplayLoc()
+                        loadAndRenderLocs()
+                    })
+                    .catch(err => {
+                        console.error('OOPs:', err)
+                        flashMsg('Cannot remove location')
+                    })
+            }
+
         })
 }
 
