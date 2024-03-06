@@ -36,6 +36,7 @@ function renderLocs(locs) {
     const selectedLocId = getLocIdFromQueryParams()
 
     var strHTML = locs.map(loc => {
+        calcUserDistance({loc.id})
         const className = (loc.id === selectedLocId) ? 'active' : ''
         return `
         <li class="loc ${className}" data-id="${loc.id}">
@@ -135,6 +136,7 @@ function onPanToUserPos() {
         .then(latLng => {
             mapService.panTo({ ...latLng, zoom: 15 })
             unDisplayLoc()
+            calcUserDistance({...latLng })
             loadAndRenderLocs()
             flashMsg(`You are at Latitude: ${latLng.lat} Longitude: ${latLng.lng}`)
         })
@@ -142,6 +144,11 @@ function onPanToUserPos() {
             console.error('OOPs:', err)
             flashMsg('Cannot get your position')
         })
+}
+
+
+function calcUserDistance(latng) {
+    console.log(latng)
 }
 
 function onUpdateLoc(locId) {
