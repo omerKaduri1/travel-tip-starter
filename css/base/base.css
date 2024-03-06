@@ -1,6 +1,6 @@
 body {
     background-color: var(--bg1);
-    color: pink;
+    color: red;
      /* #eee; */
     overflow-x: hidden;
 }
