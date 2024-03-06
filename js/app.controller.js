@@ -6,6 +6,7 @@ window.onAddMarker = onAddMarker
 window.onPanTo = onPanTo
 window.onGetLocs = onGetLocs
 window.onGetUserPos = onGetUserPos
+window.onAddPlace = onAddPlace
 
 function onInit() {
     mapService.initMap()
@@ -13,6 +14,10 @@ function onInit() {
             console.log('Map is ready')
         })
         .catch(() => console.log('Error: cannot init map'))
+}
+
+function onAddPlace(ev) {
+    console.log(ev)
 }
 
 // This function provides a Promise API to the callback-based-api of getCurrentPosition
@@ -50,4 +55,8 @@ function onGetUserPos() {
 function onPanTo() {
     console.log('Panning the Map')
     mapService.panTo(35.6895, 139.6917)
+}
+
+function onMapClick(eve){
+    console.log(eve)
 }
